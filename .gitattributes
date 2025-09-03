@@ -1,0 +1,99 @@
+[attr]lfs      filter=lfs diff=lfs merge=binary -text
+[attr]lfstext  filter=lfs diff=lfstext merge=lfstext -text
+
+# --------------------
+*.cs           text eol=lf
+*.shader       text eol=lf
+*.hlsl         text eol=lf
+*.cginc        text eol=lf
+*.compute      text eol=lf
+*.glsl         text eol=lf
+*.json         text eol=lf
+*.xml          text eol=lf
+*.yml          text eol=lf
+*.yaml         text eol=lf
+*.uxml         text eol=lf
+*.uss          text eol=lf
+*.md           text eol=lf
+*.txt          text eol=lf
+*.gitignore    text eol=lf
+*.gitattributes text eol=lf
+
+# ---------- Unity ----------
+*.meta                 text eol=lf merge=unityyamlmerge
+*.unity                text eol=lf merge=unityyamlmerge
+*.prefab               text eol=lf merge=unityyamlmerge
+*.mat                  text eol=lf merge=unityyamlmerge
+*.anim                 text eol=lf merge=unityyamlmerge
+*.controller           text eol=lf merge=unityyamlmerge
+*.overrideController   text eol=lf merge=unityyamlmerge
+*.physicMaterial       text eol=lf merge=unityyamlmerge
+*.physicsMaterial2D    text eol=lf merge=unityyamlmerge
+*.spriteatlas          text eol=lf merge=unityyamlmerge
+*.asmdef               text eol=lf merge=unityyamlmerge
+*.asmref               text eol=lf merge=unityyamlmerge
+*.inputactions         text eol=lf merge=unityyamlmerge
+*.shadersubgraph       text eol=lf merge=unityyamlmerge
+*.shadergraph          text eol=lf merge=unityyamlmerge
+*.vfx                  text eol=lf merge=unityyamlmerge
+*.terrainlayer         text eol=lf merge=unityyamlmerge
+*.guiskin              text eol=lf merge=unityyamlmerge
+*.preset               text eol=lf merge=unityyamlmerge
+*.asset                text eol=lf merge=unityyamlmerge
+
+# ---------- lfs ----------
+*.fbx   lfs
+*.obj   lfs
+*.blend lfs
+*.dae   lfs
+*.3ds   lfs
+*.max   lfs
+*.gltf  lfs
+*.glb   lfs
+*.mtl   lfs
+
+*.png   lfs
+*.jpg   lfs
+*.jpeg  lfs
+*.tga   lfs
+*.tif   lfs
+*.tiff  lfs
+*.psd   lfs
+*.exr   lfs
+*.hdr   lfs
+*.bmp   lfs
+*.gif   lfs
+
+*.wav   lfs
+*.aiff  lfs
+*.aif   lfs
+*.mp3   lfs
+*.ogg   lfs
+*.flac  lfs
+
+*.mp4   lfs
+*.mov   lfs
+*.avi   lfs
+*.webm  lfs
+*.mkv   lfs
+
+*.ttf   lfs
+*.otf   lfs
+
+*.zip   lfs
+*.7z    lfs
+*.rar   lfs
+*.tar   lfs
+*.gz    lfs
+*.unitypackage lfs
+
+*.dll   lfs
+*.so    lfs
+*.dylib lfs
+*.a     lfs
+*.lib   lfs
+*.pdb   lfs
+
+*.apk   lfs
+*.ipa   lfs
+*.obb   lfs
