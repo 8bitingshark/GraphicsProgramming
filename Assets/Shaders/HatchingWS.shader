@@ -11,7 +11,6 @@ Shader "Custom/HatchingWS"
         _GradientColor2 ("GradientColor2", Color) = (0, 0, 0, 1)
         _LightMultiplier("Light Multiplier", Float) = 2.0
         _BandsMultiplier("Bands Multiplier", Float) = 2.0
-        _GammaValue("Gamma Value", Float) = 0.2
         _MaterialTex ("Material Tex", 2D) = "white" {}
         _TextureAddValue ("Texture Add Value", Range (0, 1)) = 0
         _VoronoiTex ("Voronoi Tex", 2D) = "white" {}
@@ -50,7 +49,6 @@ Shader "Custom/HatchingWS"
             float4 _GradientColor2;
             float _LightMultiplier;
             float _BandsMultiplier;
-            float _GammaValue;
             TEXTURE2D(_MaterialTex);
             SAMPLER(sampler_MaterialTex);
             float _TextureAddValue;
@@ -75,11 +73,8 @@ Shader "Custom/HatchingWS"
             {
                 float4 position : SV_POSITION;
                 float2 uv : TEXCOORD0;
-                float3 normal : TEXCOORD1;
+                float3 normalWS : TEXCOORD1;
                 float3 worldPos : TEXCOORD2;
-                float2 screenUV : TEXCOORD3;
-                float2 camUV : TEXCOORD4;
-                float2 clipUV : TEXCOORD5;
             };
             
             // -------------------------------------------------------------------------------------------------------------------------------------------
@@ -177,22 +172,11 @@ Shader "Custom/HatchingWS"
             
             FragInputData MyVertexProgram(VertexData v)
             {
-                VertexPositionInputs posInputs = GetVertexPositionInputs(v.position.xyz);
-                
                 FragInputData outputData;
                 outputData.position = TransformObjectToHClip(v.position.xyz);
                 outputData.uv = v.uv;
-                outputData.normal = TransformObjectToWorldNormal(v.normal);
+                outputData.normalWS = TransformObjectToWorldNormal(v.normal);
                 outputData.worldPos = TransformObjectToWorld(v.position.xyz);
-                outputData.screenUV = (outputData.position.xy / outputData.position.w) * 0.5 + 0.5;
-                
-                float2 uvVS = posInputs.positionVS.xy;
-                float2 uvVS01 = uvVS * 0.5 + 0.5;                               
-                outputData.camUV = uvVS01;
-
-                float2 uvCS = posInputs.positionNDC.xy;
-                float2 uvCS01 = uvCS * 0.5 + 0.5;
-                outputData.clipUV = uvCS01;
 
                 return outputData;
             }
@@ -201,14 +185,14 @@ Shader "Custom/HatchingWS"
             {
                 float brightness = 0.0f;
                 float3 diffuseColor;
-                i.normal = normalize(i.normal);
-                ApplyLighting(i.worldPos, i.normal, brightness, diffuseColor);
+                i.normalWS = normalize(i.normalWS);
+                ApplyLighting(i.worldPos, i.normalWS, brightness, diffuseColor);
 
                 // Adding some noise
                 float2 distortedUV = StaticDistortionUV(i.worldPos.xy);
                 
                 // turn this gradients into an angle
-                float angle = atan2(i.normal.y, i.normal.x);
+                float angle = atan2(i.normalWS.y, i.normalWS.x);
                 // remap into [-1,1]
                 float remappedAngle = angle / PI;
                 // now remap into [0,1]

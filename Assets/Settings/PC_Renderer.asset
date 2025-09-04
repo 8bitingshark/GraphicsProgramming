@@ -106,16 +106,16 @@ MonoBehaviour:
     ssaoMaterial: {fileID: 2100000, guid: 1661aa85b0207324ead624b600427048, type: 2}
     blurMaterial: {fileID: 2100000, guid: 22f6395e070727b4ba348ef90330909d, type: 2}
     showAO: 1
-    kernelMethod: 1
+    kernelMethod: 0
     radius: 0.6
-    sampleCount: 32
-    occlusionFunctionVersion: 1
+    sampleCount: 64
+    occlusionFunctionVersion: 2
     occlusionBiasV1: 0.025
-    occlusionScale: 5.47
-    occlusionBiasV2: 0.025
-    occlusionPowerV2: 0.6
-    fullOcclusionThreshold: 0.02
-    noOcclusionThreshold: 0.5
-    occlusionPowerV3: 2
+    occlusionScale: 2.35
+    occlusionBiasV2: 0.54
+    occlusionPowerV2: 3.57
+    fullOcclusionThreshold: 0.025
+    noOcclusionThreshold: 0.56
+    occlusionPowerV3: 4.59
     applyBlur: 1
-    blurSpread: 1.4
+    blurSpread: 1.2

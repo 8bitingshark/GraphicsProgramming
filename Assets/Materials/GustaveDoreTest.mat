@@ -97,8 +97,8 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Bands: 0.21
-    - _BandsMultiplier: 1.73
+    - _Bands: 0.611
+    - _BandsMultiplier: 2.01
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -111,30 +111,30 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _GammaValue: 1.09
+    - _GammaValue: 3.6
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Invert: 0
+    - _Invert: 1
     - _LightMultiplier: 2.37
     - _Metallic: 0
-    - _NoiseAmount: 0.051
-    - _NoiseAmp: 0.41
+    - _NoiseAmount: 0.096
+    - _NoiseAmp: 0.2
     - _NoiseFrequency: 0.1
     - _OcclusionStrength: 1
-    - _Offset: 0.8
+    - _Offset: 0.62
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smooth: 1
+    - _Smooth: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _TextureMultiplier: 0
-    - _Tiling: 29.57
+    - _TextureMultiplier: 0.177
+    - _Tiling: 30
     - _Triangle: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -142,7 +142,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GradientColor1: {r: 1, g: 0.8618976, b: 0.8283019, a: 1}
+    - _GradientColor1: {r: 1, g: 0.7528302, b: 0.7528302, a: 1}
     - _GradientColor2: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

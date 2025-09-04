@@ -219,7 +219,7 @@ Shader "Custom/GustaveDoreHatching"
                 angle01 = floor(angle01);
                 angle01 /= 8;
                 angle01 *= -127.0;
-
+                
                 // Adding some noise
                 float2 distortedCamUV = StaticDistortionUV(i.camUV);
 
@@ -249,7 +249,7 @@ Shader "Custom/GustaveDoreHatching"
                 float4 textureColor = SAMPLE_TEXTURE2D(_MaterialTex, sampler_MaterialTex, i.uv);
 
                 // Combining light, texture and bands
-                float3 textureLighting = (textureColor.rgb + _TextureMultiplier) * diffuseColor.xyz;
+                float3 textureLighting = (textureColor.rgb + _TextureMultiplier) * diffuseColor.xyz; //* diffuseColor.xyz
                 float3 lightColorMultiplied = textureLighting * _LightMultiplier;
                 float3 inkColorMultiplied = inkColor * _BandsMultiplier;
                 float3 result = lightColorMultiplied - inkColorMultiplied;

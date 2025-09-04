@@ -314,7 +314,7 @@ Shader "Custom/CustomSSAO"
                 #if UNITY_REVERSED_Z
                     // Case for platforms with REVERSED_Z, such as D3D.
                     if(rawDepth < 0.0001)
-                        return half4(1,1,1,1);
+                        return half4(0.05,0.05,0.05,1);
                 #else
                     // Case for platforms without REVERSED_Z, such as OpenGL.
                     if(rawDepth > 0.9999)

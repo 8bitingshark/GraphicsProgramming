@@ -80,6 +80,8 @@ namespace SSAO
             m_customSSAOPass.ConfigureInput(ScriptableRenderPassInput.Normal | ScriptableRenderPassInput.Depth);
             
             renderer.EnqueuePass(m_customSSAOPass);
+            
+            
         }
     
     }

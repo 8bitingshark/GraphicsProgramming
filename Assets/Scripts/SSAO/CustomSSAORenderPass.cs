@@ -39,6 +39,7 @@ namespace SSAO
         private CustomSSAORendererFeature.CustomSSAO_Settings m_passSettings;
         private Material m_ssaoMaterial;
         private Material m_blurMaterial;
+        private Material m_aoBlitMaterial;
         
         // profilers
         private ProfilingSampler m_profSSAO      = new("Custom SSAO");
@@ -52,8 +53,12 @@ namespace SSAO
             renderPassEvent = m_passSettings.renderPassEvent;
             
             // Set materials
-            if (m_ssaoMaterial == null) m_ssaoMaterial = m_passSettings.ssaoMaterial;
-            if (m_blurMaterial == null) m_blurMaterial = m_passSettings.blurMaterial;
+            m_ssaoMaterial = m_passSettings.ssaoMaterial;
+            m_blurMaterial = m_passSettings.blurMaterial;
+            
+            Shader shader = Shader.Find("Hidden/AOBlit");
+            if (shader != null)
+                m_aoBlitMaterial = new Material(shader);
             
             if(m_ssaoMaterial == null) Debug.LogError("CustomSSAORenderPass: m_ssaoMaterial == null");
         }
@@ -97,9 +102,11 @@ namespace SSAO
             public bool IsHorizontal;
         }
         
-        private class PublishAoPassData
+        private class AOBlitPassData
         {
-            public TextureHandle AoTexture;
+            public TextureHandle AOTex;
+            public TextureHandle Destination;
+            public Material BlitMaterial;
         }
         
         private static void ExecuteCustomSsaoPass(SsaoPassData data, RasterGraphContext ctx)
@@ -286,7 +293,33 @@ namespace SSAO
                 }
                 
             }
+
+            // Copy to activeColorTexture
+            if (m_aoBlitMaterial)
+            {
+                using (var builder = renderGraph.AddRasterRenderPass<AOBlitPassData>("AO Blit", out var passData))
+                {
+                    passData.AOTex = aoTex;
+                    passData.Destination = resourceData.activeColorTexture;
+                    passData.BlitMaterial = m_aoBlitMaterial;
+
+                    builder.UseTexture(passData.AOTex, AccessFlags.Read);
+                    builder.SetRenderAttachment(passData.Destination, 0, AccessFlags.WriteAll);
+                    builder.AllowPassCulling(false);
+
+                    builder.SetRenderFunc((AOBlitPassData data, RasterGraphContext ctx) =>
+                    {
+                        // Blit in fullscreen
+                        Blitter.BlitTexture(ctx.cmd, data.AOTex, new Vector4(1, 1, 0, 0), data.BlitMaterial, 0);
+                    });
+                }
+            }
+            else if (RenderGraphUtils.CanAddCopyPassMSAA())
+            {
+                renderGraph.AddCopyPass(aoTex, resourceData.activeColorTexture);
+            }
             
+            // OLD
             // Publish
             /*
             using (var builder = renderGraph.AddRasterRenderPass<PublishAoPassData>("Publish AO Global", out var pubData, m_profSSAO))
@@ -307,11 +340,6 @@ namespace SSAO
             ssaoFd.AOTexture = aoTex;
             ssaoFd.Width = width;
             ssaoFd.Height = height; */
-            
-            if (RenderGraphUtils.CanAddCopyPassMSAA())
-            {
-                renderGraph.AddCopyPass(aoTex, resourceData.activeColorTexture);
-            }
         }
     }
 }
