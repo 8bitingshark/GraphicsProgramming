@@ -19,17 +19,15 @@ configurable directly from the Inspector, supporting both spherical and hemisphe
 ### Results
 ---
 <p><strong>Spherical Method, Occlusion function V3</strong> (with dark areas enhanced)</p>
-<p align="center">
-<img src="Docs/SSAO_V3_Spherical.png" width="470"/>
-</p>
+<img src="Docs/SSAO_V3_Spherical.png" width="800"/>
 
 ---
 <p><strong>Hemispherical Method, Occlusion function V2</strong></p>
-<img src="Docs/SSAO_V2_Hemispherical.png" width="470"/>
+<img src="Docs/SSAO_V2_Hemispherical.png" width="800"/>
 
 ---
 <p><strong>Hemispherical Method, Occlusion function V3</strong></p>
-<img src="Docs/SSAO_V3_Hemispherical.png" width="470"/>
+<img src="Docs/SSAO_V3_Hemispherical.png" width="800"/>
 
 ## 🎨 Hatching Shaders
 ---
@@ -38,13 +36,13 @@ These shaders simulate hand-drawn crosshatching by combining procedural bands, n
 ### Results
 ---
 <p><strong>Hatching WS</strong></p>
-<img src="Docs/Hatching3D_1.png" width="470"/>
+<img src="Docs/Hatching3D_1.png" width="800"/>
 
 ---
 <p><strong>Hatching CS</strong></p>
-<img src="Docs/Hatching3D_2.png" width="470"/>
+<img src="Docs/Hatching3D_2.png" width="800"/>
 
 ---
 <p><strong>Hatching CS - multiple lights</strong></p>
-<img src="Docs/Hatching3D_2_1.png" width="470"/>
+<img src="Docs/Hatching3D_2_1.png" width="800"/>
 
