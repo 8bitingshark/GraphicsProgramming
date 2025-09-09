@@ -1,5 +1,5 @@
 # Graphics Programming assignment
-## 🌘SSAO Shader – Unity 6 (URP)
+## 🌘 SSAO Shader – Unity 6 (URP)
 ---
 This project implements a Screen Space Ambient Occlusion (SSAO) effect for Unity 6 with Universal Render Pipeline (URP), using a Custom Render Pass.
 
@@ -13,17 +13,21 @@ configurable directly from the Inspector, supporting both spherical and hemisphe
 
 ### Compatibility
 ---
-
 - Tested on a device running **Direct3D (DirectX 11)**. 
 - Should also work with **OpenGL**, but not explicitly tested.
 
 ### Results
 ---
+| Spherical - V3 | Hemispherical - V2 | Hemispherical - V3 |
+|-----------|-----------|-----------|
+| ![v1](Docs/SSAO_V3_Spherical.png) | ![v2](Docs/SSAO_V2_Hemispherical.png) | ![v3](Docs/SSAO_V3_Hemispherical.png) |
 
-
-## 🎨Hatching Shaders
+## 🎨 Hatching Shaders
 ---
 In addition to SSAO, the project also includes **hatching shaders** inspired by engraving and etching techniques (major inspiration is from Gustave Doré drawings).  
 These shaders simulate hand-drawn crosshatching by combining procedural bands, noise, Voronoi textures, and paper overlays.
 ### Results
 ---
+| Hatching WS | Hatching VS | Hatching VS - multiple lights |
+|-----------|-----------|-----------|
+| ![v1](Docs/Hatching3D_1.png) | ![v2](Docs/Hatching3D_2.png) | ![v3](Docs/Hatching3D_2_1.png) |
