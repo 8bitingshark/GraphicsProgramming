@@ -19,7 +19,9 @@ configurable directly from the Inspector, supporting both spherical and hemisphe
 ### Results
 ---
 <p><strong>Spherical Method, Occlusion function V3</strong> (with dark areas enhanced)</p>
+<p align="center">
 <img src="Docs/SSAO_V3_Spherical.png" width="470"/>
+</p>
 
 ---
 <p><strong>Hemispherical Method, Occlusion function V2</strong></p>
